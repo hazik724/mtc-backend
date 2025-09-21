@@ -8,10 +8,11 @@ import { ReviewsModule } from './reviews/reviews.module';
 import { ApplicationsModule } from './applications/applications.module';
 import { ContactsModule } from './contacts/contacts.module';
 import { JobsModule } from './jobs/job.module';
+import { AuthModule } from './auth/auth.module';
 
 
 @Module({
-  imports: [AnnouncementsModule,PrismaModule,ReviewsModule,JobsModule,ApplicationsModule,ContactsModule],
+  imports: [AnnouncementsModule,PrismaModule,ReviewsModule,JobsModule,ApplicationsModule,ContactsModule,AuthModule],
   controllers: [AppController],
   providers: [AppService, PrismaService],
 })
