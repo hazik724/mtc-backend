@@ -1,9 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -17,12 +11,11 @@ model Admin {
   id           Int      @id @default(autoincrement())
   email        String   @unique
   password     String
-  refreshToken String?  // hashed refresh token (nullable)
+  refreshToken String?
   role         String   @default("admin")
   createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt
 }
-
 
 model Announcement {
   id        Int      @id @default(autoincrement())
@@ -32,24 +25,21 @@ model Announcement {
   updatedAt DateTime @updatedAt
 }
 
-model job{
-  id Int @id @default(autoincrement())
-  title String
-  desc String
+model job {
+  id        Int      @id @default(autoincrement())
+  title     String
+  desc      String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-
 }
 
-
-
 model Application {
-  id        Int      @id @default(autoincrement())
-  name      String
-  email     String
-  phone     String?
+  id            Int      @id @default(autoincrement())
+  name          String
+  email         String
+  phone         String?
   qualification String
-  createdAt DateTime @default(now())
+  createdAt     DateTime @default(now())
 }
 
 model Reviews {
@@ -59,8 +49,6 @@ model Reviews {
   createdAt DateTime @default(now())
 }
 
-
-
 model Contact {
   id        Int      @id @default(autoincrement())
   name      String
@@ -68,5 +56,28 @@ model Contact {
   phone     String?
   message   String
   createdAt DateTime @default(now())
+  type      String   @default("tuition")
 }
 
+model SchoolAnnouncement {
+  id        Int      @id @default(autoincrement())
+  title     String
+  content   String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model SchoolReview {
+  id        Int      @id @default(autoincrement())
+  name      String
+  message   String
+  createdAt DateTime @default(now())
+}
+
+model SchoolGallery {
+  id        Int      @id @default(autoincrement())
+  title     String
+  url       String   // Cloudinary file URL
+  publicId  String?   // Cloudinary public_id for deletion
+  createdAt DateTime @default(now())
+}
